@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.db import models
 from mysite.polls.models import Choice, Question
-from mysite.polls.tests.POLL_REGISTRIES import QUESTION
+from mysite.polls.tests.data import QUESTION
 
 
 class ChoiceModelTest(TestCase):

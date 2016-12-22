@@ -18,9 +18,11 @@ class IndexGetTest(TestCase):
 class IndexInvalidGet(TestCase):
 
     def test_not_found(self):
+        """GET /invalid_url_ must return status code 404. (Not found)"""
         resp = self.client.get('/invalid_url_')
         self.assertEqual(404, resp.status_code)
 
     def test_template_used(self):
+        """GET /invalid_url_ must use template 404.html"""
         resp = self.client.get('/invalid_url_')
         self.assertTemplateUsed(resp, '404.html')
