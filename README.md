@@ -1,6 +1,6 @@
 ## Django Tutorial
 [![Build Status](https://travis-ci.org/henriquebraga/django-tutorial.svg?branch=master)](https://travis-ci.org/henriquebraga/django-tutorial)
-[![Code Health](https://landscape.io/github/henriquebraga/django-tutorial/master/landscape.svg?style=flat)](https://landscape.io/github/henriquebraga/django-tutorial/master)g
+[![Code Health](https://landscape.io/github/henriquebraga/django-tutorial/master/landscape.svg?style=flat)](https://landscape.io/github/henriquebraga/django-tutorial/master)
 Django tutorial from the official documentation.
 (with some additional tests)
 
