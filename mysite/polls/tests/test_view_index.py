@@ -4,7 +4,7 @@ from django.shortcuts import resolve_url as r
 class IndexGetTest(TestCase):
 
     def setUp(self):
-        self.resp = self.client.get(r('poll:index'))
+        self.resp = self.client.get(r('index'))
 
     def test_get(self):
         """GET / must return status code 200."""
@@ -17,12 +17,13 @@ class IndexGetTest(TestCase):
 
 class IndexInvalidGet(TestCase):
 
+    def setUp(self):
+        self.resp = self.client.get('/invalid_url_')
+
     def test_not_found(self):
         """GET /invalid_url_ must return status code 404. (Not found)"""
-        resp = self.client.get('/invalid_url_')
-        self.assertEqual(404, resp.status_code)
+        self.assertEqual(404, self.resp.status_code)
 
     def test_template_used(self):
         """GET /invalid_url_ must use template 404.html"""
-        resp = self.client.get('/invalid_url_')
-        self.assertTemplateUsed(resp, '404.html')
+        self.assertTemplateUsed(self.resp, '404.html')

@@ -13,8 +13,7 @@ class QuestionModelTest(TestCase):
 
     def test_is_model(self):
         """Question must be a model instance."""
-        question = type(Question())
-        expected = type(models.Model)
+        question, expected = type(self.obj), type(models.Model)
         self.assertIsInstance(question, expected)
 
     def test_create(self):
@@ -30,9 +29,12 @@ class QuestionModelTest(TestCase):
         """Published recently must be true"""
         self.assertTrue(self.obj.published_recently())
 
-    def test_not_published_recently(self):
+    def test_was_not_published_recently(self):
         """Published recently must be false"""
         self.obj.pub_date = self.obj.pub_date - timedelta(days=2)
         self.assertFalse(self.obj.published_recently())
+
+
+
 
 

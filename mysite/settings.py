@@ -31,7 +31,6 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', default=[], cast=Csv())
 # Application definition
 
 INSTALLED_APPS = [
-    'mysite.polls',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +40,8 @@ INSTALLED_APPS = [
     #Third
     'django_extensions',
     'test_without_migrations',
+    'mysite.polls',
+
 ]
 
 MIDDLEWARE = [
