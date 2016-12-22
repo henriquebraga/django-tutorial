@@ -15,8 +15,8 @@ class Question(models.Model):
         ordering = ['-pub_date']
 
     def published_recently(self):
+        """Returns if it was published recently (range: 1 day)"""
         return self.pub_date >= timezone.now() - timedelta(days=1)
-
 
     def __str__(self):
         return self.question_text
