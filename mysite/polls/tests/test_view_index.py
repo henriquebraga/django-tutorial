@@ -1,9 +1,13 @@
 from django.test import TestCase
 from django.shortcuts import resolve_url as r
 
+from mysite.polls.models import Question
+
+
 class IndexGetTest(TestCase):
 
     def setUp(self):
+        self.obj = Question()
         self.resp = self.client.get(r('index'))
 
     def test_get(self):

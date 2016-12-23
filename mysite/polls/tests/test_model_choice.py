@@ -1,13 +1,13 @@
 from django.test import TestCase
 from django.db import models
 from mysite.polls.models import Choice, Question
-from mysite.polls.tests.data import QUESTION
+from mysite.polls.tests.data import QUESTION_DATA
 
 
 class ChoiceModelTest(TestCase):
 
     def setUp(self):
-        question = Question.objects.create(**QUESTION)
+        question = Question.objects.create(**QUESTION_DATA)
         self.obj = Choice(question=question, choice_text="I don't know", votes=10)
         self.obj.save()
 

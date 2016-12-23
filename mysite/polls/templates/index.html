@@ -5,6 +5,19 @@
     <title></title>
 </head>
 <body>
+<section>
+    <h1>Latest Questions</h1>
 
+        {% if questions %}
+            <ul>
+                {% for q in questions %}
+                <li>{{ q.question_text }}</li>
+                {% endfor %}
+
+            </ul>
+        {% else  %}
+            <p>No polls are available.</p>
+        {% endif %}
+</section>
 </body>
 </html>

@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.db import models
-from .data import QUESTION
+from .data import QUESTION_DATA
 from datetime import timedelta
 from mysite.polls.models import Question
 
@@ -8,7 +8,7 @@ from mysite.polls.models import Question
 class QuestionModelTest(TestCase):
 
     def setUp(self):
-        self.obj = Question(**QUESTION)
+        self.obj = Question(**QUESTION_DATA)
         self.obj.save()
 
     def test_is_model(self):
