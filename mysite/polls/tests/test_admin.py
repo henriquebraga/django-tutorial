@@ -24,4 +24,3 @@ class ChoiceInlineTest(TestCase):
         """'model' class attribute must be a Choice instance type."""
         self.assertIsInstance(Choice, type(ChoiceInline.model))
 
-        

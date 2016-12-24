@@ -6,8 +6,8 @@ from datetime import timedelta
 
 
 class Question(models.Model):
-    question_text = models.CharField(max_length=200)
-    pub_date = models.DateTimeField('date published')
+    question_text = models.CharField('texto', max_length=200)
+    pub_date = models.DateTimeField('data de publicação')
 
     class Meta:
         verbose_name = 'Pergunta'
