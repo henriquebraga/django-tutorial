@@ -5,3 +5,8 @@ QUESTION_DATA = {
     "pub_date": timezone.now()
 }
 
+CHOICE_DATA = {
+    'choice_text': "I'm Batman!",
+    'votes': 3
+}
+

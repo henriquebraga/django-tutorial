@@ -2,12 +2,13 @@ from django.test import TestCase
 from django.shortcuts import resolve_url as r
 
 from mysite.polls.models import Question
+from mysite.polls.tests.data import QUESTION_DATA
 
 
 class IndexGetTest(TestCase):
 
     def setUp(self):
-        self.obj = Question()
+        self.obj = Question.objects.create(**QUESTION_DATA)
         self.resp = self.client.get(r('index'))
 
     def test_get(self):
@@ -18,6 +19,12 @@ class IndexGetTest(TestCase):
         """GET / must use template index.html"""
         self.assertTemplateUsed(self.resp, 'index.html')
 
+    def test_link(self):
+        """HTML must contain link containing the absolute URL.
+           E.g: /polls/1/detail/
+        """
+        expected = 'href="{0}"'.format(self.obj.get_absolute_url())
+        self.assertContains(self.resp, expected)
 
 class IndexInvalidGet(TestCase):
 
@@ -31,3 +38,5 @@ class IndexInvalidGet(TestCase):
     def test_template_used(self):
         """GET /invalid_url_ must use template 404.html"""
         self.assertTemplateUsed(self.resp, '404.html')
+
+

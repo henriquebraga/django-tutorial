@@ -2,6 +2,7 @@
 
 from django.db import models
 from django.utils import timezone
+from django.shortcuts import resolve_url as r
 from datetime import timedelta
 
 
@@ -20,6 +21,9 @@ class Question(models.Model):
 
     def __str__(self):
         return self.question_text
+
+    def get_absolute_url(self):
+        return r('polls:detail', question_id=self.pk)
 
 
 class Choice(models.Model):

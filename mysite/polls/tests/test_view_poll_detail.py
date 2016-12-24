@@ -29,7 +29,6 @@ class PollDetailGetTest(TestCase):
             (QUESTION_DATA['question_text'],
              self.format_date(QUESTION_DATA['pub_date'])
                 )
-
         for content in contents:
             with self.subTest():
                 self.assertContains(self.resp, content)
