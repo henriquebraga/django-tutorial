@@ -45,7 +45,6 @@ class PollDetailGetInvalidContext(TestCase):
         self.resp = self.client.get(r(DETAIL_URL_ALIAS, invalid_id))
     def test_get(self):
         """Must return status code 404 (Not Found)."""
-
         self.assertEqual(404, self.resp.status_code)
 
     def test_template(self):

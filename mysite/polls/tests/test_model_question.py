@@ -34,6 +34,14 @@ class QuestionModelTest(TestCase):
         self.obj.pub_date = self.obj.pub_date - timedelta(days=2)
         self.assertFalse(self.obj.published_recently())
 
+    def test_model_ordering(self):
+        """Ordering must be by pub_date inverted."""
+        expected = ['-pub_date']
+        self.assertSequenceEqual(expected, self.obj._meta.ordering)
+
+
+
+
 
 
 
