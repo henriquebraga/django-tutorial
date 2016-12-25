@@ -24,7 +24,7 @@ class PollDetailGetTest(TestCase):
         self.assertIsInstance(data, Question)
 
     def test_data(self):
-        """Must contain the poll details."""
+        """Must contain. the poll details."""
         contents = \
             (QUESTION_DATA['question_text'],
              self.format_date(QUESTION_DATA['pub_date'])
