@@ -1,13 +1,14 @@
 from django.shortcuts import resolve_url as r
 from django.test import TestCase
 from mysite.polls.models import Question
-from mysite.polls.tests.data import QUESTION_DATA
+from mysite.polls.tests.data import QUESTION_DATA, CHOICE_DATA
 
 DETAIL_URL_ALIAS = 'polls:detail'
 class PollDetailGetTest(TestCase):
 
     def setUp(self):
         self.obj = Question.objects.create(**QUESTION_DATA)
+        self.choice = self.obj.choice_set.create(**CHOICE_DATA)
         self.resp = self.client.get(r('polls:detail', self.obj.pk))
 
     def test_get(self):
@@ -23,15 +24,24 @@ class PollDetailGetTest(TestCase):
         data = self.resp.context['question']
         self.assertIsInstance(data, Question)
 
-    def test_data(self):
+    def test_context_data(self):
         """Must contain. the poll details."""
-        contents = \
-            (QUESTION_DATA['question_text'],
-             self.format_date(QUESTION_DATA['pub_date'])
-                )
-        for content in contents:
+        text = QUESTION_DATA['question_text']
+        published_at = self.format_date(QUESTION_DATA['pub_date'])
+        choice, votes = CHOICE_DATA['choice_text'], CHOICE_DATA['votes']
+        contents = (
+                    (text, 1),
+                    (published_at, 1),
+                    (choice, 1),
+                    )
+
+        for content, count in contents:
             with self.subTest():
-                self.assertContains(self.resp, content)
+                self.assertContains(self.resp, content, count)
+
+    def test_html_choices(self):
+        """HTML must contain one choice (<li> tag)."""
+        self.assertContains(self.resp, '<li', 1)
 
     def format_date(self, utc):
         """Format date to the following format: dd/mm/yyyy"""

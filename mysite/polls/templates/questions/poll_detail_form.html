@@ -7,5 +7,14 @@
 <body>
     <h1>{{ question.question_text }}</h1>
     {{ question.pub_date | date:'d/m/Y'}}
+    <ul>
+        {% if question.choice_set.all %}
+            {% for choice in question.choice_set.all %}
+                <li>{{ choice.choice_text }} {{ choice.votes }}</li>
+            {% endfor %}
+        {% else %}
+            <li>No choices available.</li>
+        {% endif %}
+    </ul>
 </body>
 </html>

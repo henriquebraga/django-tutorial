@@ -6,7 +6,7 @@ QUESTION_DATA = {
 }
 
 CHOICE_DATA = {
-    'choice_text': "I'm Batman!",
+    'choice_text': "I am Batman!",
     'votes': 3
 }
 
